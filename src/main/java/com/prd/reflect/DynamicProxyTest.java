@@ -11,6 +11,8 @@ import java.lang.reflect.Proxy;
 public class DynamicProxyTest {
     public static void main(String[] args) {
 
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+
         DemoInterface demoInterface = (DemoInterface) Proxy.newProxyInstance(StudyService.class.getClassLoader(),
                 new Class[]{DemoInterface.class},
                 new DynamicLogProxyHandler(new StudyService()));
