@@ -15,8 +15,7 @@ testWriteArrayListError()
 
 
 
-并发下的ArrayList错误分析
-https://blog.csdn.net/lan861698789/article/details/81697409
+
 ## ConcurrentModificationException
 Java并发编程：同步容器、并发容器和阻塞队列
 https://blog.csdn.net/qq_20176495/article/details/74129727

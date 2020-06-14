@@ -3,7 +3,9 @@ package com.prd.colletctions;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author ruidong.pang
@@ -110,7 +112,7 @@ public class ArrayListText {
 
         // 10000个并发同时写ArrayList，导致部分数据丢失。实际写入数量不足10000
         // 而且会出现部分数据为空的情况
-        ArrayList<String> integers = new ArrayList<>();
+/*        ArrayList<String> integers = new ArrayList<>();
         for (int i=0;i<10000;i++) {
             new Thread(()->{
                 integers.add(Thread.currentThread().getName());
@@ -123,7 +125,48 @@ public class ArrayListText {
             if (null==s||"".equals(s)) {
                 log.info("integers index i={}, s={}",i,s);
             }
-        }
+        }*/
 
+        // 多种循环测试
+        ArrayList<Integer> intlist = new ArrayList<>();
+        for (int i=0;i<10000000;i++) {
+            intlist.add(i);
+        }
+        iteratorThroughList(intlist);
+        ranDomThroughList(intlist);
+        foreachThroughList(intlist);
+        streamThroughList(intlist);
+    }
+
+    public static void iteratorThroughList(List list) {
+        long startTime = System.currentTimeMillis();
+        for (Iterator iter = list.iterator();iter.hasNext();) {
+            iter.next();
+        }
+        long endTime = System.currentTimeMillis();
+        log.info("第1种迭代器访问,耗时{}",endTime-startTime);
+    }
+
+    public static void ranDomThroughList(List list) {
+        long startTime = System.currentTimeMillis();
+        for (int i=0;i<list.size();i++) {
+            list.get(i);
+        }
+        long endTime = System.currentTimeMillis();
+        log.info("第2种随机访问,耗时{}",endTime-startTime);
+    }
+
+    public static void foreachThroughList(List list) {
+        long startTime = System.currentTimeMillis();
+        for (Object obj:list);
+        long endTime = System.currentTimeMillis();
+        log.info("第3种for循环遍历访问,耗时{}",endTime-startTime);
+    }
+
+    public static void streamThroughList(List list) {
+        long startTime = System.currentTimeMillis();
+        list.forEach(l -> {});
+        long endTime = System.currentTimeMillis();
+        log.info("第4种forEach流式访问,耗时{}",endTime-startTime);
     }
 }
