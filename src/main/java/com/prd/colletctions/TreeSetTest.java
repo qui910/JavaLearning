@@ -3,6 +3,7 @@ package com.prd.colletctions;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
@@ -54,6 +55,48 @@ public class TreeSetTest {
         log.info("ceiling bb: {}", tSet.ceiling("bb"));
         log.info("ceiling eeeee: {}", tSet.ceiling("eeeee"));
 
+        // ceiling(大于)
+        log.info("higher bbb: {}", tSet.higher("bb"));
+        // subSet()
+        log.info("subSet(bb, true, aaa, true): %s\n", tSet.subSet("bb", true, "aaa", true));
+        log.info("subSet(bb, true, aaa, false): %s\n", tSet.subSet("bb", true, "aaa", false));
+        log.info("subSet(bb, false, aaa, true): %s\n", tSet.subSet("bb", false, "aaa", true));
+        log.info("subSet(bb, false, aaa, false): %s\n", tSet.subSet("bb", false, "aaa", false));
+        // headSet()
+        System.out.printf("headSet(ccc, true): %s\n", tSet.headSet("ccc", true));
+        System.out.printf("headSet(ccc, false): %s\n", tSet.headSet("ccc", false));
+        // tailSet()
+        System.out.printf("tailSet(ccc, true): %s\n", tSet.tailSet("ccc", true));
+        System.out.printf("tailSet(ccc, false): %s\n", tSet.tailSet("ccc", false));
 
+
+        // 删除“ccc”
+        tSet.remove("ccc");
+        // 将Set转换为数组
+        String[] arr = (String[])tSet.toArray(new String[0]);
+        for (String str:arr)
+            System.out.printf("for each : %s\n", str);
+
+        // 打印TreeSet
+        System.out.printf("TreeSet:%s\n", tSet);
+
+        // 遍历TreeSet
+        for(Iterator iter = tSet.iterator(); iter.hasNext(); ) {
+            System.out.printf("iter : %s\n", iter.next());
+        }
+
+        // 删除并返回第一个元素
+        val = (String)tSet.pollFirst();
+        System.out.printf("pollFirst=%s, set=%s\n", val, tSet);
+
+        // 删除并返回最后一个元素
+        val = (String)tSet.pollLast();
+        System.out.printf("pollLast=%s, set=%s\n", val, tSet);
+
+        // 清空HashSet
+        tSet.clear();
+
+        // 输出HashSet是否为空
+        System.out.printf("%s\n", tSet.isEmpty()?"set is empty":"set is not empty");
     }
 }
