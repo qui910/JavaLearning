@@ -58,45 +58,45 @@ public class TreeSetTest {
         // ceiling(大于)
         log.info("higher bbb: {}", tSet.higher("bb"));
         // subSet()
-        log.info("subSet(bb, true, aaa, true): %s\n", tSet.subSet("bb", true, "aaa", true));
-        log.info("subSet(bb, true, aaa, false): %s\n", tSet.subSet("bb", true, "aaa", false));
-        log.info("subSet(bb, false, aaa, true): %s\n", tSet.subSet("bb", false, "aaa", true));
-        log.info("subSet(bb, false, aaa, false): %s\n", tSet.subSet("bb", false, "aaa", false));
+        log.info("subSet(bb, true, aaa, true): {}", tSet.subSet("bb", true, "aaa", true));
+        log.info("subSet(bb, true, aaa, false): {}", tSet.subSet("bb", true, "aaa", false));
+        log.info("subSet(bb, false, aaa, true): {}", tSet.subSet("bb", false, "aaa", true));
+        log.info("subSet(bb, false, aaa, false): {}", tSet.subSet("bb", false, "aaa", false));
         // headSet()
         log.info("headSet(aaa, true):{}", tSet.headSet("aaa", true));
         log.info("headSet(aaa, false): {}", tSet.headSet("aaa", false));
         // tailSet()
-        System.out.printf("tailSet(ccc, true): %s\n", tSet.tailSet("ccc", true));
-        System.out.printf("tailSet(ccc, false): %s\n", tSet.tailSet("ccc", false));
+        log.info("tailSet(aaa, true): {}", tSet.tailSet("aaa", true));
+        log.info("tailSet(aaa, false): {}", tSet.tailSet("aaa", false));
 
 
-        // 删除“ccc”
-        tSet.remove("ccc");
+        // 删除“aaa”
+        tSet.remove("aaa");
         // 将Set转换为数组
         String[] arr = (String[])tSet.toArray(new String[0]);
         for (String str:arr)
-            System.out.printf("for each : %s\n", str);
+            log.info("for each : {}", str);
 
         // 打印TreeSet
-        System.out.printf("TreeSet:%s\n", tSet);
+        log.info("TreeSet:{}", tSet);
 
         // 遍历TreeSet
         for(Iterator iter = tSet.iterator(); iter.hasNext(); ) {
-            System.out.printf("iter : %s\n", iter.next());
+            log.info("iter : {}", iter.next());
         }
 
         // 删除并返回第一个元素
-        val = (String)tSet.pollFirst();
-        System.out.printf("pollFirst=%s, set=%s\n", val, tSet);
+        String val = (String)tSet.pollFirst();
+        log.info("pollFirst={}, set={}", val, tSet);
 
         // 删除并返回最后一个元素
         val = (String)tSet.pollLast();
-        System.out.printf("pollLast=%s, set=%s\n", val, tSet);
+        log.info("pollLast={}, set{}", val, tSet);
 
         // 清空HashSet
         tSet.clear();
 
         // 输出HashSet是否为空
-        System.out.printf("%s\n", tSet.isEmpty()?"set is empty":"set is not empty");
+        log.info("{}", tSet.isEmpty()?"set is empty":"set is not empty");
     }
 }
