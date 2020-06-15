@@ -38,6 +38,7 @@ public class TreeSetTest {
         tSet.add("aaa");
         tSet.add("a");
         tSet.add("bb");
+        // 根据Comparator 算法不同，ddd的大小也是3，所以无法写入
         tSet.add("ddd");
         tSet.add("cccc");
         tSet.add("eeeee");
