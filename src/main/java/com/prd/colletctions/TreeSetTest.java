@@ -63,8 +63,8 @@ public class TreeSetTest {
         log.info("subSet(bb, false, aaa, true): %s\n", tSet.subSet("bb", false, "aaa", true));
         log.info("subSet(bb, false, aaa, false): %s\n", tSet.subSet("bb", false, "aaa", false));
         // headSet()
-        System.out.printf("headSet(ccc, true): %s\n", tSet.headSet("ccc", true));
-        System.out.printf("headSet(ccc, false): %s\n", tSet.headSet("ccc", false));
+        log.info("headSet(aaa, true):{}", tSet.headSet("aaa", true));
+        log.info("headSet(aaa, false): {}", tSet.headSet("aaa", false));
         // tailSet()
         System.out.printf("tailSet(ccc, true): %s\n", tSet.tailSet("ccc", true));
         System.out.printf("tailSet(ccc, false): %s\n", tSet.tailSet("ccc", false));
