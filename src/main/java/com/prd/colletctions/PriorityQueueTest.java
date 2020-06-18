@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.*;
 
 @Slf4j
-public class QueueTest {
+public class PriorityQueueTest {
 
   private static Integer[] testPriority = {3,6,9,4,8,2,1};
 //  private static Integer[] testPriority = {1,2,3,4,5,6,7,8,9};
