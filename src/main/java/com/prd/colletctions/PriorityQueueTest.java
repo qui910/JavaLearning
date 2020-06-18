@@ -15,22 +15,22 @@ public class PriorityQueueTest {
 
     log.info("1 << 25 {},1<<10 {}",1 << 25, 1<<10);
 
-//    int[] ints = {1,2,3,4,5,6,7,8};
-//    int i = 0;
-//    // 先赋值，后使用
-//    log.info("ints[i=1]:{}",ints[i=1]);
-//    log.info("i:{}",i);
-//
-//    // 先使用，后赋值
-//    log.info("ints[i++]:{}",ints[i++]);
-//    log.info("i:{}",i);
-//
-//    // 先赋值，后使用
-//    log.info("ints[++i]:{}",ints[++i]);
-//    log.info("i:{}",i);
+    int[] ints = {1,2,3,4,5,6,7,8};
+    int i = 0;
+    // 先赋值，后使用
+    log.info("ints[i=1]:{}",ints[i=1]);
+    log.info("i:{}",i);
+
+    // 先使用，后赋值
+    log.info("ints[i++]:{}",ints[i++]);
+    log.info("i:{}",i);
+
+    // 先赋值，后使用
+    log.info("ints[++i]:{}",ints[++i]);
+    log.info("i:{}",i);
 
     // 测试heap排序算法
-    List<Integer> testList = Arrays.asList(testPriority);
+/*    List<Integer> testList = Arrays.asList(testPriority);
     PriorityQueue<Integer> testIntegers = new PriorityQueue<>(testList);
     log.info("初始化后的队列为:{}",testIntegers);
 
@@ -48,7 +48,7 @@ public class PriorityQueueTest {
     log.info("添加后的队列为:{}",testIntegers);
     for (Integer integers:testIntegers) {
         log.info("元素依次为{}",integers);
-    }
+    }*/
 
     // 测试并发
 /*    PriorityQueue<String> testIntegers = new PriorityQueue<>();
@@ -60,6 +60,27 @@ public class PriorityQueueTest {
     Thread.sleep(10000);
     log.info("integers size={}",testIntegers.size());*/
 
+    // 遍历的同时改写,提示 ConcurrentModificationException即fast-fast事件
+    List<Integer> testList = Arrays.asList(testPriority);
+    PriorityQueue<Integer> testIntegers = new PriorityQueue<>(testList);
+    new Thread(()->{
+      for(Integer num:testIntegers) {
+        log.info("num is {}",num);
+        try {
+          Thread.sleep(1000);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+    }).start();
+    new Thread(()->{
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+      testIntegers.poll();
+    }).start();
 
 
   }
