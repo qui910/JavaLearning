@@ -138,6 +138,10 @@ public class ArrayListText {
         streamThroughList(intlist);
     }
 
+    /**
+     * 通过迭代器循环列表
+     * @param list  列表数据
+     */
     public static void iteratorThroughList(List list) {
         long startTime = System.currentTimeMillis();
         for (Iterator iter = list.iterator();iter.hasNext();) {
