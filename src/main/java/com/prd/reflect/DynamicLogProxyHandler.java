@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 日志功能代理处理器
  * @date 2020-06-11 11:44

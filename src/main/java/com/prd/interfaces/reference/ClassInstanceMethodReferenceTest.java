@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description Java类型实例方法引用测试
  *    隐式传递一个参数num

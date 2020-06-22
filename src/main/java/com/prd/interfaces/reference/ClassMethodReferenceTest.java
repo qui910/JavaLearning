@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.function.BiPredicate;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description  Java静态方法引用测试
  * @date 2020-06-09 13:00

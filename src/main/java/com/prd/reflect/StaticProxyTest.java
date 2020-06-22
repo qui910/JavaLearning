@@ -1,7 +1,7 @@
 package com.prd.reflect;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 静态代理测试
  * @date 2020-06-11 11:40

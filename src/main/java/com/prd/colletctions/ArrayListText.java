@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 数组列表测试
  * @date 2020-06-12 17:13

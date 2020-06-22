@@ -9,7 +9,7 @@ import java.lang.reflect.Modifier;
 import java.util.Scanner;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 反射类使用测试
  * @date 2020-06-10 12:05

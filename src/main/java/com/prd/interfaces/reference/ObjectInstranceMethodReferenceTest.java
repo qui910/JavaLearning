@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.function.Consumer;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 已有实例方法引用测试
  * @date 2020-06-09 15:58

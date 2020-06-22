@@ -3,7 +3,7 @@ package com.prd.reflect;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 学习实现类
  * @date 2020-06-11 11:42

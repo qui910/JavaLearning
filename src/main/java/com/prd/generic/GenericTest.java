@@ -3,7 +3,7 @@ package com.prd.generic;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description 泛型测试
  * @date 2020-06-11 19:38

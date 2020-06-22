@@ -1,7 +1,7 @@
 package com.prd.generic;
 
 /**
- * @author ruidong.pang
+ * @author prd
  * @version V1.0
  * @Description
  * @date 2020-06-11 19:45
