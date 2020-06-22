@@ -2,7 +2,7 @@ package com.prd.colletctions;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author ruidong.pang
@@ -55,7 +55,76 @@ public class HashMapTest {
       // 测试 SimpleEntr
 
 
-      // 测试
+      // 测试循环
+      for (int i=0;i<10;i++) {
+          testMap.put(i,i+"");
+      }
+      // keySet循环
+/*
+      Set<Integer> keysets = testMap.keySet();
+      for (Integer is:keysets) {
+          log.info("key {},values:{}",is,testMap.get(is));
+      }
+*/
+
+/*
+      Iterator iter = testMap.keySet().iterator();
+      while (iter.hasNext()) {
+          Integer key = (Integer) iter.next();
+          log.info("key {},values:{}",key,testMap.get(key));
+      }
+ */
+
+/*
+      testMap.keySet().forEach(key->{
+          log.info("key {},values:{}",key,testMap.get(key));
+      });
+*/
+
+      // entrySet循环
+/*
+      Set<Map.Entry<Integer,String>> entryets = testMap.entrySet();
+      for (Map.Entry entry:entryets) {
+          log.info("key {},values:{}",entry.getKey(),entry.getValue());
+      }
+ */
+
+/*
+      Iterator iter = testMap.entrySet().iterator();
+      while (iter.hasNext()) {
+          Map.Entry<Integer,String> entry = (Map.Entry<Integer,String>) iter.next();
+          log.info("key {},values:{}",entry.getKey(),entry.getValue());
+      }
+*/
+
+/*
+      testMap.entrySet().forEach(entry->{
+          log.info("key {},values:{}",entry.getKey(),entry.getValue());
+      });
+*/
+
+      // values循环
+/*
+      Collection<String> vals= testMap.values();
+      for (String value:vals) {
+          log.info("values:{}",value);
+      }
+*/
+/*
+
+      Collection<String> vals= testMap.values();
+      Iterator<String> iterator = vals.iterator();
+      while (iterator.hasNext()) {
+          log.info("values:{}",iterator.next());
+      }
+*/
+/*
+
+      testMap.values().forEach(value->{
+          log.info("values:{}",value);
+      });
+*/
+
 
   }
 }
