@@ -56,9 +56,9 @@ public class HashMapTest {
 
 
       // 测试循环
-      for (int i=0;i<10;i++) {
-          testMap.put(i,i+"");
-      }
+//      for (int i=0;i<10;i++) {
+//          testMap.put(i,i+"");
+//      }
       // keySet循环
 /*
       Set<Integer> keysets = testMap.keySet();
@@ -125,6 +125,15 @@ public class HashMapTest {
       });
 */
 
-
+      HashMap<Integer,String> testMap1 = new HashMap<Integer,String>(16);
+      testMap1.put(13,"13");
+      testMap1.put(29,"29");
+      testMap1.put(33,"33");
+      Set<Integer> keysets = testMap1.keySet();
+      Iterator iter = keysets.iterator();
+      while(iter.hasNext()) {
+          Integer s = (Integer) iter.next();
+          log.info("第i个：{}",s);
+      }
   }
 }
