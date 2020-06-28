@@ -41,7 +41,5 @@ public class VectorTest {
             //避免同时产生过多线程
             while(Thread.activeCount()>20);
         }
-
-
     }
 }
