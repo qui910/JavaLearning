@@ -11,7 +11,6 @@ public class MyClassloaderTest1 {
     // 只打印5，说明常量时存储在类的常量池中的。
     //     System.out.println(MyChild.j1);
 
-
     // （2）调用子类的final静态变量，会导致父类与子类静态代码块初始化
     // 父类静态变量初始化
     // 父类静态块初始化
@@ -19,13 +18,29 @@ public class MyClassloaderTest1 {
     // 子类静态变量初始化
     // 子类静态块初始化
     // 2
-//    System.out.println(MyChild.j2);
+    //    System.out.println(MyChild.j2);
 
     // （3）调用子类的静态变量，与（2）类似
-      System.out.println(MyChild.k1);
+    //    System.out.println(MyChild.k1);
 
+    // (4) 调用子类的实例变量，会导致父类与子类的全部初始化
+    // 父类静态变量初始化
+    // 父类静态块初始化
+    // 子类final静态变量初始化
+    // 子类静态变量初始化
+    // 子类静态块初始化
+    // 父类实例块初始化
+    // 父类实例变量初始化
+    // 父类构造器初始化
+    // 子类实例变量初始化
+    // 子类实例块初始化
+    // 子类构造器初始化
+    // 1
+    // 注意：变量与块的初始化顺序与代码的顺序有关，如果块写在变量前，则块先初始化，变量后初始化（类与实例的变量和块都符合此规则）
+//    System.out.println(new MyChild().i1);
 
-
+    // （5）通过子类调用继承的父类实例变量，情况与（4）一致
+    System.out.println(new MyChild().i);
   }
 }
 
