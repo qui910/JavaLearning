@@ -46,7 +46,7 @@ public class WeakHashMapTest {
 
 
       // 这种添加方式，"2","3"等不是弱建，无法GC回收。只有new String("1") 才是弱建，原因：？？？
-      WeakHashMap weakHashMap1 = new WeakHashMap();
+/*      WeakHashMap weakHashMap1 = new WeakHashMap();
       weakHashMap1.put(new String("1"),"w1");
       weakHashMap1.put("2","w2");
       weakHashMap1.put("3","w3");
@@ -54,6 +54,6 @@ public class WeakHashMapTest {
       Thread.sleep(1000);
       System.gc();
       Thread.sleep(1000);
-      log.info("WeakHashMap1 size：{}",weakHashMap1.size());
+      log.info("WeakHashMap1 size：{}",weakHashMap1.size());*/
   }
 }
