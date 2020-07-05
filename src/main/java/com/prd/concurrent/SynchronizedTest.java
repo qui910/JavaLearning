@@ -7,9 +7,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class SynchronizedTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        testObjectLockA();
-        testOjectLockB();
+//        testOjectLockB();
+        testInterrupte();
     }
 
     /**
@@ -37,6 +38,39 @@ public class SynchronizedTest {
         new Thread(()->classA.methodA()).start();
         new Thread(()->SynchrondClass.staticMethodA()).start();
         new Thread(()->SynchrondClass.staticMethodB()).start();
+    }
+
+
+    /**
+     * 测试阻塞状态是否响应中断
+     */
+    private static void testInterrupte() throws InterruptedException {
+        Object obj = new Object();
+        Thread threadA = new Thread(()->{
+            synchronized (obj) {
+                System.out.println("testInterrupte threadA has lock");
+                while(true) {
+
+                }
+            }
+        });
+        threadA.start();
+        TimeUnit.SECONDS.sleep(4);
+        Thread threadB = new Thread(()->{
+            synchronized (obj) {
+                System.out.println("testInterrupte threadB has lock");
+                while(true) {
+
+                }
+            }
+        });
+        threadB.start();
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("ThreadA 中断前状态："+threadA.getState().name());
+        System.out.println("ThreadB 中断前状态："+threadB.getState().name());
+        threadB.interrupt();
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("ThreadB 中断后状态："+threadB.getState().name());
     }
 }
 
