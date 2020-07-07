@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 写时复制List测试
+ * 因为新增，删除，修改时都由lock控制，故而并发写的性能不好
+ * 所以主要应该场景是遍历比较多的情况
  */
 public class CopyOnWriteListTest {
 
