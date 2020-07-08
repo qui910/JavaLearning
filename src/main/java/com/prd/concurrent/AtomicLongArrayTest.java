@@ -18,7 +18,9 @@ public class AtomicLongArrayTest {
     public static void main(String[] args) {
 //        readAndWrite();
 
-        bothUpdate();
+//        bothUpdate();
+
+        manayUpdate();
     }
 
     private static void readAndWrite() {
@@ -97,5 +99,40 @@ public class AtomicLongArrayTest {
         for (int j=0;j<array.length();j++) {
             System.out.println("遍历元素["+j+"]:"+array.get(j));
         }
+    }
+
+
+    /**
+     * 同时开启10个线程，每个线程针对数组各自自增10000,
+     * 结果：
+     [10010, 10020, 10030, 10040, 10050, 10060, 10070, 10080, 10090, 10100]
+       分析：结果是线程安全的
+     */
+    private static void manayUpdate() {
+
+        Thread[] threads = new Thread[10];
+
+        for (int j=0;j<10;j++) {
+            Thread tmp = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for(int i=0;i<10000;i++){
+                        array.getAndIncrement(i%array.length());
+                    }
+                }
+            });
+            tmp.start();
+            threads[j]=tmp;
+        }
+
+        for (int k=0;k<10;k++) {
+            try {
+                threads[k].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(array);
     }
 }
