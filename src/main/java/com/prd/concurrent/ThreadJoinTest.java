@@ -7,14 +7,59 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadJoinTest {
 
-  public static void main(String[] args) throws InterruptedException {
-      testJoinNormal();
-  }
+    public static void main(String[] args) throws InterruptedException {
+//        testJoinNormal();
+        testJoinInterrupt();
+    }
+
+    /**
+     * 测试Join的中断效果
+     * 注意：这里中断其实是中断主线程，而非子线程。
+     * 因为是主线程等待子线程执行完成。主线程是waigting状态
+     结果：
+     mainThread started
+     mainThread waiting subThread finished
+     mainThread interrupt
+     mainThread finished
+     SubThread finished
+     分析：
+     主线中断后，子线程继续执行完成。
+     */
+    private static void testJoinInterrupt() {
+        Thread subThread = new Thread(()->{
+            try {
+                Thread.sleep(5000);
+                System.out.println("SubThread finished");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Thread mainThread = new Thread(()->{
+            System.out.println("mainThread started");
+            subThread.start();
+            System.out.println("mainThread waiting subThread finished");
+            try {
+                subThread.join();
+            } catch (InterruptedException e) {
+                System.out.println("mainThread interrupt");
+                //e.printStackTrace();
+            }
+        });
+        mainThread.start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        mainThread.interrupt();
+        System.out.println("mainThread finished");
+    }
 
     /**
      * join常规用法
      */
-  private static void testJoinNormal() {
+    private static void testJoinNormal() {
 
       class ThreadB extends Thread {
           @Override
@@ -62,7 +107,7 @@ public class ThreadJoinTest {
           e.printStackTrace();
       }
       System.out.println("线程A在JOIN中的状态："+threadA.getState().name());
-  }
+    }
 
 }
 
