@@ -9,7 +9,46 @@ public class ThreadJoinTest {
 
     public static void main(String[] args) throws InterruptedException {
 //        testJoinNormal();
-        testJoinInterrupt();
+//        testJoinInterrupt();
+        testJoinSameMethod();
+    }
+
+    /**
+     * 测试Join的类似实现
+     * 其实Join的原理，就是用线程对象的wait实现
+     * 结果：
+     mainThread finished
+     mainThread started
+     mainThread waiting subThread finished
+     SubThread finished
+     */
+    private static void testJoinSameMethod() {
+        Thread subThread = new Thread(()->{
+            try {
+                Thread.sleep(4000);
+                System.out.println("SubThread finished");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Thread mainThread = new Thread(()->{
+            System.out.println("mainThread started");
+            subThread.start();
+            System.out.println("mainThread waiting subThread finished");
+
+            // join的同理代码
+//            subThread.join();
+            synchronized (subThread) {
+                try {
+                    subThread.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        mainThread.start();
+        System.out.println("mainThread finished");
     }
 
     /**
