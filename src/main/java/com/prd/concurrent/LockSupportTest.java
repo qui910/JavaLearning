@@ -11,7 +11,9 @@ public class LockSupportTest {
     public static void main(String[] args) {
 //        testNormalUsed();
 //        testNormalInterrupte();
-        testUnBeforPark();
+//        testUnBeforPark();
+
+        testParkJStack();
     }
 
     /**
@@ -90,5 +92,22 @@ public class LockSupportTest {
         test3.start();
     }
 
+    /**
+     * 使用park(thread)可以在jstack等工具中显示阻塞的对象
+     */
+    private static void testParkJStack() {
+        new Thread(()->{
+            while(!Thread.currentThread().isInterrupted()) {
+                System.out.println("park this");
+                LockSupport.park(Thread.currentThread());
+            }
+        }).start();
 
+        new Thread(()->{
+            while(!Thread.currentThread().isInterrupted()) {
+                System.out.println("park");
+                LockSupport.park();
+            }
+        }).start();
+    }
 }
