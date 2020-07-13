@@ -1,7 +1,7 @@
 package com.prd.singleton;
 
 /**
- * 双重检查（推荐）
+ * 双重检查（推荐,面试中推荐介绍）
  */
 public class SingleTon6 {
     private volatile static SingleTon6 instance;
