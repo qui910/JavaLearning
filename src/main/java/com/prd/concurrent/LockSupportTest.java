@@ -10,10 +10,10 @@ public class LockSupportTest {
 
     public static void main(String[] args) {
 //        testNormalUsed();
-//        testNormalInterrupte();
+        testNormalInterrupte();
 //        testUnBeforPark();
 
-        testParkJStack();
+//        testParkJStack();
     }
 
     /**
@@ -47,6 +47,7 @@ public class LockSupportTest {
     /**
      * 测试线程test2被park阻塞后，可以被中断
      * 且中断后 run方法执行完成。
+     * 并测试park时，使用循环条件判断
      */
     private  static void testNormalInterrupte() {
         Thread test2 = new Thread(()->{
@@ -64,10 +65,10 @@ public class LockSupportTest {
             e.printStackTrace();
         }
 
-        // 这里unpark失效，是因为park处有中断状态判断，只有中断才能打断park的阻塞
+        // 因为使用while循环判断，这里unpark后，线程马上又重新进入park阻塞状态，只有中断才能最终真正的唤醒线程
         System.out.println("开始unpark前，park中线程中断状态："+test2.isInterrupted());
         LockSupport.unpark(test2);
-        System.out.println("结束unpark");
+        System.out.println("结束unpark，线程的状态："+test2.getState().name());
 
         System.out.println("中断前，park中线程中断状态："+test2.isInterrupted());
         test2.interrupt();
@@ -94,6 +95,7 @@ public class LockSupportTest {
 
     /**
      * 使用park(thread)可以在jstack等工具中显示阻塞的对象
+     * 结果：该例实现错误？？未显示哪个对象？？
      */
     private static void testParkJStack() {
         new Thread(()->{
@@ -110,4 +112,6 @@ public class LockSupportTest {
             }
         }).start();
     }
+
+
 }

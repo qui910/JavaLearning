@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * 因为新增，删除，修改时都由lock控制，故而并发写的性能不好
  * 所以主要应该场景是遍历比较多的情况
  */
-public class CopyOnWriteListTest {
+public class CopyOnWriteArrayListTest {
 
     private static CopyOnWriteArrayList<Integer> copy = new CopyOnWriteArrayList<>();
 
@@ -80,12 +80,12 @@ public class CopyOnWriteListTest {
      Exception in thread "Thread-1" java.lang.ArrayIndexOutOfBoundsException: 4
      at java.util.concurrent.CopyOnWriteArrayList.get(CopyOnWriteArrayList.java:388)
      at java.util.concurrent.CopyOnWriteArrayList.remove(CopyOnWriteArrayList.java:495)
-     at com.prd.concurrent.CopyOnWriteListTest.lambda$bothRemove$3(CopyOnWriteListTest.java:88)
+     at com.prd.concurrent.CopyOnWriteArrayListTest.lambda$bothRemove$3(CopyOnWriteArrayListTest.java:88)
      at java.lang.Thread.run(Thread.java:748)
      Exception in thread "Thread-0" java.lang.ArrayIndexOutOfBoundsException: 3
      at java.util.concurrent.CopyOnWriteArrayList.get(CopyOnWriteArrayList.java:388)
      at java.util.concurrent.CopyOnWriteArrayList.remove(CopyOnWriteArrayList.java:495)
-     at com.prd.concurrent.CopyOnWriteListTest.lambda$bothRemove$2(CopyOnWriteListTest.java:76)
+     at com.prd.concurrent.CopyOnWriteArrayListTest.lambda$bothRemove$2(CopyOnWriteArrayListTest.java:76)
      at java.lang.Thread.run(Thread.java:748)
         分析： 在线程A和线程B 同时删除时，因为删除时加锁的，不会造成数据安全性问题。但是由于时同步删除，造成部分数据没删除到，同时迭代时i位置的元素不存在提示
      ArrayIndexOutOfBoundsException 异常。
