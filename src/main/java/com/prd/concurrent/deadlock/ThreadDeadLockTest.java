@@ -1,4 +1,4 @@
-package com.prd.concurrent;
+package com.prd.concurrent.deadlock;
 
 import java.util.concurrent.TimeUnit;
 
