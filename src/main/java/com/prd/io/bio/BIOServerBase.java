@@ -9,7 +9,7 @@ import java.net.Socket;
 /**
  * BIO模式的SocketServer
  */
-public class BIOServer {
+public class BIOServerBase {
 
     private static final int DEFAULT_PORT=8888;
 
@@ -47,7 +47,7 @@ public class BIOServer {
                     writer.flush();
 
                     //查看客户端是否退出
-                    if(Client.QUIT.equals(msg)){
+                    if(BIOClientBase.QUIT.equals(msg)){
                         System.out.println("客户端["+socket.toString()+"]已退出");
                         break;
                     }

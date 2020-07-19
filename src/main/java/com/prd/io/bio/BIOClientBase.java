@@ -5,7 +5,10 @@ import org.junit.Test;
 import java.io.*;
 import java.net.Socket;
 
-public class Client {
+/**
+ * BIO模式的SocketClient
+ */
+public class BIOClientBase {
 
     public static final String QUIT="quit";
 
@@ -37,6 +40,7 @@ public class Client {
                 String input = consoleReader.readLine();
 
                 // 发送消息给服务器
+                // 添加换行符，以便服务端readline()可以区分
                 writer.write(input+"\n");
                 writer.flush();
 
