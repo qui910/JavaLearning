@@ -51,8 +51,13 @@ public class NIOFileCopyTest {
         FileChannel inChannel = FileChannel.open(Paths.get("E:\\a.zip"), StandardOpenOption.READ);
         FileChannel outChennel = FileChannel.open(Paths.get("D:\\b.zip"),StandardOpenOption.WRITE,
                 StandardOpenOption.READ,StandardOpenOption.CREATE_NEW);
-        outChennel.transferFrom(inChannel,0,inChannel.size());
+//        outChennel.transferFrom(inChannel,0,inChannel.size());
 
+        // 加个while循环，保证全部数据都拷贝完成
+        long transferred = 0; //已拷贝的字节数
+        while (transferred!=inChannel.size()) {
+            transferred+=inChannel.transferTo(0,inChannel.size(),outChennel);
+        }
         long end = System.currentTimeMillis();
         // 复制文件所需的时间：29362
         System.out.println("复制文件所需的时间：" + (end - startTime));
@@ -108,7 +113,9 @@ public class NIOFileCopyTest {
         //将通道中的数据存入缓冲区
         while (inChannel.read(buf) != -1) {
             buf.flip();//切换读取数据的模式
-            outChanel.write(buf);
+            while(buf.hasRemaining()) {
+                outChanel.write(buf);
+            }
             buf.clear();
         }
         outChanel.close();
