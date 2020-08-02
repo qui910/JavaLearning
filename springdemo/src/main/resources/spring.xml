@@ -13,13 +13,21 @@
     <!-- spring4后这个可以不写，只写下面即可 <context:annotation-config></context:annotation-config> -->
     <!--<context:component-scan base-package="com"></context:component-scan>-->
 
-    <bean id="dao" class="com.prd.dao.SpringCoreDemoDaoImpl" p:id="xxx">
+    <bean id="dao" class="com.prd.dao.SpringCoreDemoDaoImpl" p:id="xxx" init-method="init">
         <property name="name" value="pangrd" />
+    </bean>
+
+    <bean id="dao1" class="com.prd.dao.SpringCoreDemoDaoImpl1" p:id="xxx1">
+        <property name="name" value="pangrd1" />
     </bean>
 
     <!-- 注解和xml可以配合使用 -->
     <bean id="service" class="com.prd.service.SpringCoreDemoService" c:dao-ref="dao">
         <property name="dao" ref="dao" />
+        <property name="luban" ref="dao1" />
     </bean>
+
+
+
 
 </beans>

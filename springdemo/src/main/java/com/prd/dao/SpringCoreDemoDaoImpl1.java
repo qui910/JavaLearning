@@ -1,9 +1,11 @@
 package com.prd.dao;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository(value = "dao1")
+@Scope("prototype")
 public class SpringCoreDemoDaoImpl1 implements SpringCoreDemoDao{
     private String name;
 

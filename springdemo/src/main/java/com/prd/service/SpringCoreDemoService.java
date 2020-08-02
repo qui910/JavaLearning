@@ -2,11 +2,14 @@ package com.prd.service;
 
 import com.prd.dao.SpringCoreDemoDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Service(value = "service")
+@Scope("singleton")
+//@Scope("prototype")
 public class SpringCoreDemoService {
 
 //    @Autowired  //Autowired是默认byType方式自动装配,如果byType有多个，那接下来根据byName匹配属性名称
