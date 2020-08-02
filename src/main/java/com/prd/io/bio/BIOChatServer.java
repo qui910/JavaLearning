@@ -14,6 +14,8 @@ import java.util.concurrent.Executors;
  * （1）基于BIO模型
  * （2）支持多人同时在线
  * （3）每个用户的发言都被转发给其他用户
+ *
+ * 分单线程和多线程方式
  */
 public class BIOChatServer {
     public static final int DEFAULT_PORT = 8888;
