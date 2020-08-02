@@ -12,10 +12,26 @@ public class SpringCoreTest {
 //        SpringCoreDemoService service = (SpringCoreDemoService) context.getBean("service");
 //        service.Hello();
 
+
         // 单纯JavaConfig方式
+//        AnnotationConfigApplicationContext context = new
+//                AnnotationConfigApplicationContext(SpringJavaConfig.class);
+//        SpringCoreDemoService service = (SpringCoreDemoService) context.getBean("service");
+//        service.Hello();
+
+
+        // 自动装配
+//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+//                "classpath:spring1.xml");
+//        SpringCoreDemoService service = (SpringCoreDemoService) context.getBean("service");
+//        service.Hello();
+//        service.Hello1();
+
+        // 自动装配 注解
         AnnotationConfigApplicationContext context = new
                 AnnotationConfigApplicationContext(SpringJavaConfig.class);
         SpringCoreDemoService service = (SpringCoreDemoService) context.getBean("service");
         service.Hello();
+        service.Hello1();
     }
 }

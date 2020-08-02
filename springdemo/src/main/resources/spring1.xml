@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+        <!-- byType 缺点，有多个实现类是无法自动诸如  default-autowire="byType">  这时使用byName-->
+        <!-- byName 是和dao的set方法的名称有关系-->
+
+
+    <!-- 自动装配 -->
+    <bean id="dao" class="com.prd.dao.SpringCoreDemoDaoImpl" p:id="xxx">
+        <property name="name" value="pangrd" />
+    </bean>
+
+    <bean id="luban" class="com.prd.dao.SpringCoreDemoDaoImpl1" p:id="xxx1">
+        <property name="name" value="pangrd1" />
+    </bean>
+
+    <bean id="service" class="com.prd.service.SpringCoreDemoService" c:dao-ref="dao">
+    </bean>
+
+</beans>
