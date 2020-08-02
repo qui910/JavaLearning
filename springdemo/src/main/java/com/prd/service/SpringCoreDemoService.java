@@ -2,6 +2,7 @@ package com.prd.service;
 
 import com.prd.dao.SpringCoreDemoDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,9 @@ public class SpringCoreDemoService {
     @Resource
     private SpringCoreDemoDao dao;
 
-//    @Autowired
-    @Resource  //这里Resource 默认通过byName方式自动装配，但是与xml配置不一样，这时匹配属性名称，而非set方法名称
+    @Autowired
+    @Qualifier("luban") //限定符，指定加载接口的某个实现类
+//    @Resource  //这里Resource 默认通过byName方式自动装配，但是与xml配置不一样，这时匹配属性名称，而非set方法名称
     private SpringCoreDemoDao dao1;
 
     public SpringCoreDemoService(SpringCoreDemoDao dao) {

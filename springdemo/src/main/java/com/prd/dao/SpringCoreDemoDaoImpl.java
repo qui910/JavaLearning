@@ -1,7 +1,10 @@
 package com.prd.dao;
 
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +16,9 @@ public class SpringCoreDemoDaoImpl implements SpringCoreDemoDao,
     private String name;
 
     private String id;
+
+
+
 
     public SpringCoreDemoDaoImpl() {
         System.out.println("Constructor");
