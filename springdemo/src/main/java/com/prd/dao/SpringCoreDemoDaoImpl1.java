@@ -1,11 +1,13 @@
 package com.prd.dao;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository(value = "dao1")
 @Scope("prototype")
+@Profile("oracle") //表示生产，测试环境切换
 public class SpringCoreDemoDaoImpl1 implements SpringCoreDemoDao{
     private String name;
 

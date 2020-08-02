@@ -30,6 +30,9 @@ public class SpringCoreTest {
         // 自动装配 注解
 //        AnnotationConfigApplicationContext context = new
 //                AnnotationConfigApplicationContext(SpringJavaConfig.class);
+//        context.getEnvironment().setActiveProfiles("mysql");//多个环境切换
+//        context.register(SpringJavaConfig.class);
+//        context.refresh();
 //        SpringCoreDemoService service = (SpringCoreDemoService) context.getBean("service");
 //        System.out.println(service.hashCode());
 //        service.Hello();

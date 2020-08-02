@@ -5,11 +5,13 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 
 @Repository(value = "dao")
+@Profile("mysql")
 public class SpringCoreDemoDaoImpl implements SpringCoreDemoDao,
         InitializingBean, DisposableBean {
 
