@@ -17,10 +17,10 @@ public class SpringCoreDemoService {
     @Resource
     private SpringCoreDemoDao dao;
 
-    @Autowired
-    @Qualifier("luban") //限定符，指定加载接口的某个实现类
-//    @Resource  //这里Resource 默认通过byName方式自动装配，但是与xml配置不一样，这时匹配属性名称，而非set方法名称
-    private SpringCoreDemoDao dao1;
+//    @Autowired
+//    @Qualifier("luban") //限定符，指定加载接口的某个实现类
+    @Resource  //这里Resource 默认通过byName方式自动装配，但是与xml配置不一样，这时匹配属性名称，而非set方法名称
+    private SpringCoreDemoDao luban;
 
     public SpringCoreDemoService(SpringCoreDemoDao dao) {
         this.dao = dao;
@@ -31,7 +31,7 @@ public class SpringCoreDemoService {
     }
 
     public void Hello1() {
-        dao1.hellworld();
+        luban.hellworld();
     }
 
     public void setDao(SpringCoreDemoDao dao) {
@@ -39,6 +39,6 @@ public class SpringCoreDemoService {
     }
 
     public void setLuban(SpringCoreDemoDao dao) {
-        this.dao1 = dao;
+        this.luban = dao;
     }
 }

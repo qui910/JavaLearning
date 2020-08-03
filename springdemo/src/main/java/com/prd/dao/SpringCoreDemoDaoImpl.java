@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 
 @Repository(value = "dao")
-@Profile("mysql")
+//@Profile("mysql")
 public class SpringCoreDemoDaoImpl implements SpringCoreDemoDao,
         InitializingBean, DisposableBean {
 
