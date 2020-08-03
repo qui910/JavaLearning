@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 @ComponentScan(value = "com",
         excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,pattern = "com.test.*"))
 //@ImportResource("classpath:spring.xml") <!-- javaconfig 与 xml，注解 混合使用 -->
-@EnableAspectJAutoProxy // 开启AspectJ
+@EnableAspectJAutoProxy(proxyTargetClass = false) // 开启AspectJ
 public class SpringJavaConfig {
 
     @Bean

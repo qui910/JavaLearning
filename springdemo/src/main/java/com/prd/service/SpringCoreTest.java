@@ -18,8 +18,18 @@ public class SpringCoreTest {
         // 单纯JavaConfig方式
         AnnotationConfigApplicationContext context = new
                 AnnotationConfigApplicationContext(SpringJavaConfig.class);
-        SpringCoreDemoService service = (SpringCoreDemoService) context.getBean("service");
+        ISpringCoreDemoService service = context.getBean(ISpringCoreDemoService.class);
         service.Hello();
+        service.Hello1("aaa");
+        // ISpringCoreDemoService service = context.getBean(SpringCoreDemoService.class);
+        // 通过这种方式会提示 Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException:
+        // No qualifying bean of type 'com.prd.service.SpringCoreDemoService' available
+        // 因为 开启了切面 SpringCoreDemoService也已经被动态代理了，无法通过class获取，
+        // 解决方法：(1)可以使用 名称"service" 或ISpringCoreDemoService.class获取
+        // (2) 或 @EnableAspectJAutoProxy(proxyTargetClass = true) 这里为true，就是CGLIB代码。默认为false
+        // 时就是使用JDK的动态代理，这时会被代理为Proxy,而非SpringCoreDemoService
+        // 这里就是JDK动态代理就是使用 聚合接口，而非继承目标对象。因为代理对象是从Proxy继承的，同时实现目标对象接口，所以只能
+        // 是实现目标对象的接口
 
 
         // 自动装配

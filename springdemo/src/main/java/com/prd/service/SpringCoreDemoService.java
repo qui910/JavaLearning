@@ -1,5 +1,6 @@
 package com.prd.service;
 
+import com.prd.anno.Luban;
 import com.prd.dao.SpringCoreDemoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,7 +12,7 @@ import javax.annotation.Resource;
 @Service(value = "service")
 @Scope("singleton")
 //@Scope("prototype")
-public class SpringCoreDemoService {
+public class SpringCoreDemoService implements ISpringCoreDemoService {
 
 //    @Autowired  //Autowired是默认byType方式自动装配,如果byType有多个，那接下来根据byName匹配属性名称
     @Resource
@@ -30,7 +31,8 @@ public class SpringCoreDemoService {
         dao.hellworld();
     }
 
-    public void Hello1() {
+    @Luban
+    public void Hello1(String str) {
         luban.hellworld();
     }
 
