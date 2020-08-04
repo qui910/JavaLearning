@@ -91,6 +91,14 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
+
+        // class io.netty.handler.codec.http.DefaultHttpRequest
+        // class io.netty.handler.codec.http.LastHttpContent$1
+        System.out.println(msg.getClass());
+
+        // /0:0:0:0:0:0:0:1:13058
+        System.out.println(ctx.channel().remoteAddress());
+
         if (msg instanceof HttpRequest) {
 
             HttpRequest httpRequest = (HttpRequest) msg;
