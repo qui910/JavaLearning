@@ -11,7 +11,8 @@ import java.net.URI;
 
 /**
  * 自定义Http处理器
- *
+ * 使用Netty开发Http，比servlet更为底层，性能会更为好一些，但是比servlet和tomcat的差别就是太底层了
+ * 连请求路由都不支持。
  * 由浏览器测试 连接地址http://localhost:8080
  运行结果：
  handler Added
@@ -31,7 +32,7 @@ import java.net.URI;
  请求方法名：GET
  请求URI：/favicon.ico
  请求favicon.ico
- -------------------------
+ ---------------------
  channel Inactive
  channel Unregistered
  handler Added
