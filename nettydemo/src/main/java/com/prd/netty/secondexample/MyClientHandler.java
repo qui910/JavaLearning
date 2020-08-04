@@ -14,6 +14,12 @@ public class MyClientHandler extends SimpleChannelInboundHandler<String> {
         ctx.writeAndFlush("from client:"+ LocalDateTime.now());
     }
 
+    //首次连接时，先发送信息才能出发服务端的channelRead0
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush("来自于客户端"+ctx.name());
+    }
+
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();

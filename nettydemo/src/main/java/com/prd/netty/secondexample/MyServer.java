@@ -24,7 +24,7 @@ public class MyServer {
                     // childHandler的话针对的是workerGroup
 
             ChannelFuture channelFuture = bootstrap.bind(8081).sync();
-            channelFuture.channel().close().sync();
+            channelFuture.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
