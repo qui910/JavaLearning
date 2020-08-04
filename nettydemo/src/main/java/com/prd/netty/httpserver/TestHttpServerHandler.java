@@ -1,4 +1,4 @@
-package com.prd.netty.firstexample;
+package com.prd.netty.httpserver;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

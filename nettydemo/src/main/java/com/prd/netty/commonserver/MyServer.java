@@ -1,4 +1,4 @@
-package com.prd.netty.secondexample;
+package com.prd.netty.commonserver;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

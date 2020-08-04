@@ -1,4 +1,4 @@
-package com.prd.netty.secondexample;
+package com.prd.netty.commonserver;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

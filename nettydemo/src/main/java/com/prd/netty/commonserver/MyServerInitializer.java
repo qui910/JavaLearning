@@ -1,4 +1,4 @@
-package com.prd.netty.secondexample;
+package com.prd.netty.commonserver;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -9,8 +9,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
-public class MyClientInitializer extends ChannelInitializer<SocketChannel> {
-
+public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
@@ -19,6 +18,6 @@ public class MyClientInitializer extends ChannelInitializer<SocketChannel> {
                 .addLast(new LengthFieldPrepender(4)) //编码
                 .addLast(new StringDecoder(CharsetUtil.UTF_8))
                 .addLast(new StringEncoder(CharsetUtil.UTF_8))
-                .addLast(new MyClientHandler());
+                .addLast(new MyServerSocketHandler());
     }
 }
