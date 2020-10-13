@@ -21,7 +21,7 @@
       <groupId>junit</groupId>
       <!-- JUnit入门-1.在IDEA创建JUnit测试用例 https://zhuanlan.zhihu.com/p/42453559-->
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.1</version>
       <scope>compile</scope> <!-- IDEA下maven工程找不到@Test https://blog.csdn.net/seudongnan/article/details/78268508-->
     </dependency>
       <dependency>
