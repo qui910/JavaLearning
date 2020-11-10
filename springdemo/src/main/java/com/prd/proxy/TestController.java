@@ -14,7 +14,14 @@ package com.prd.proxy;
 public class TestController {
 
     public static void main(String[] args) {
-        UserDaoImpl impl = new UserDaoImpl();
+//        UserDao impl = new UserDaoImpl();
+
+//        UserDao impl = new UserLogDaoImpl();
+
+//        UserDao target = new UserDaoImpl();
+//        UserDao impl = new UserDaoLogZh(target);
+
+        UserDao impl = new UserDaoLogAndTimeImpl();
         impl.query();
     }
 }

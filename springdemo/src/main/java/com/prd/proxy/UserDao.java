@@ -9,9 +9,9 @@
  **/
 package com.prd.proxy;
 
-public class UserDaoImpl implements UserDao {
-
-    public void query() {
-        System.out.println("查询数据库");
-    }
+/**
+ * 业务接口
+ */
+public interface UserDao {
+    void query();
 }
