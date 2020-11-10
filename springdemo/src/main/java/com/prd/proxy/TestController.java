@@ -21,7 +21,14 @@ public class TestController {
 //        UserDao target = new UserDaoImpl();
 //        UserDao impl = new UserDaoLogZh(target);
 
-        UserDao impl = new UserDaoLogAndTimeImpl();
-        impl.query();
+//        UserDao impl = new UserDaoLogAndTimeImpl();
+
+//        UserDao target = new UserDaoLogZh(new UserDaoImpl());
+//        UserDao impl = new UserDaoTimeZh(target);
+//        impl.query();
+
+          UserDao target = new UserDaoImpl();
+          UserDao impl = (UserDao) ProxyUtil.newInstance(target);
+          impl.query();
     }
 }
