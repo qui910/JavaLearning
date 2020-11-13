@@ -26,3 +26,17 @@
           impl.query();
 
 ```
+2. JDK动态代理
+```$java
+        final UserDaoImpl impl = new UserDaoImpl();
+        UserDao proxy = (UserDao) Proxy.newProxyInstance(TestController.class.getClassLoader(),
+                new Class[]{UserDao.class}, (proxy1, method, args1) -> {
+                    System.out.println("-----log-----");
+                    return method.invoke(impl, args1);
+                });
+        proxy.query();
+```
+
+
+
+3. CGlib动态代理
