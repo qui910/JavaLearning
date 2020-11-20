@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    spring要解决的事情
+    1. 哪些类需要来关联
+    2. 怎么告知哪些类(写Bean)
+    3. 怎么维护依赖关系（getter，setter）
+    4. 怎么体现setter 或 constr
+-->
+<beans default="byType">
+    <bean id="dao" class="com.prd.createspring.UserDaoImpl"></bean>
+    <bean id="dao1" class="com.prd.createspring.UserDaoImpl1"></bean>
+    <bean id="service" class="com.prd.createspring.UserServiceImpl">
+        <!-- <constructor-arg name="userDao" ref="dao"></constructor-arg> -->
+        <property name="userDao" ref="dao"></property>
+    </bean>
+</beans>
