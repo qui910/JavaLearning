@@ -1,6 +1,5 @@
 package com.prd.createspring;
 
-import com.prd.proxy.UserDao;
 
 /**
  * JavaLearning
@@ -13,9 +12,11 @@ public class UserServiceImpl implements UserService {
 
     UserDao userDao;
 
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
-    }
+
+
+//    public UserServiceImpl(UserDao userDao) {
+//        this.userDao = userDao;
+//    }
 
     @Override
     public void find() {
