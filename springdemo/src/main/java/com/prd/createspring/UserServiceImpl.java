@@ -1,6 +1,8 @@
 package com.prd.createspring;
 
 
+import com.prd.anno.Luban;
+
 /**
  * JavaLearning
  * 2020-11-20 21:16
@@ -8,9 +10,10 @@ package com.prd.createspring;
  * @author ruidong.pang
  * @since
  **/
+@Luban("service")
 public class UserServiceImpl implements UserService {
 
-    UserDao userDao;
+//    UserDao userDao;
 
 
 
@@ -21,6 +24,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void find() {
         System.out.println("service find");
-        userDao.query();
+//        userDao.query();
     }
 }

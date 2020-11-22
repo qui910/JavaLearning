@@ -31,7 +31,7 @@ public class SpringCoreDemoService implements ISpringCoreDemoService {
         dao.hellworld();
     }
 
-    @Luban
+    @Luban("")
     public void Hello1(String str) {
         luban.hellworld();
     }

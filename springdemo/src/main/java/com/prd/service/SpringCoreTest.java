@@ -1,6 +1,8 @@
 package com.prd.service;
 
 import com.prd.anno.Entry;
+import com.prd.dao.SpringCoreDemoDao;
+import com.prd.dao.SpringCoreDemoDaoImpl;
 import com.prd.model.CityEntry;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,11 +18,11 @@ public class SpringCoreTest {
 
 
         // 单纯JavaConfig方式
-        AnnotationConfigApplicationContext context = new
+/*        AnnotationConfigApplicationContext context = new
                 AnnotationConfigApplicationContext(SpringJavaConfig.class);
         ISpringCoreDemoService service = context.getBean(ISpringCoreDemoService.class);
         service.Hello();
-        service.Hello1("aaa");
+        service.Hello1("aaa");*/
         // ISpringCoreDemoService service = context.getBean(SpringCoreDemoService.class);
         // 通过这种方式会提示 Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException:
         // No qualifying bean of type 'com.prd.service.SpringCoreDemoService' available
@@ -58,5 +60,26 @@ public class SpringCoreTest {
 //        // 调用方法
 //        Entry entry= (Entry) clazz.getDeclaredAnnotation(Entry.class);
 //        System.out.println(entry.value());
+
+
+        // 前面通过JavaConfig方法扫描到bean，然后注入到spring容器。
+        AnnotationConfigApplicationContext context = new
+                AnnotationConfigApplicationContext();
+        // 这里也可以通过 register注册Javaconfig，然后再refresh的方式注册bean
+/*        context.register(SpringJavaConfig.class);
+        context.refresh();
+        ISpringCoreDemoService service = context.getBean(ISpringCoreDemoService.class);
+        service.Hello();*/
+        // 也可以直接注册单个bean
+/*        context.register(SpringCoreDemoDaoImpl.class);
+        context.refresh();
+        SpringCoreDemoDao dao = context.getBean(SpringCoreDemoDao.class);
+        dao.hellworld();*/
+        // 也可以在context中配置扫描路径
+        context.scan("com");
+        context.refresh();
+        ISpringCoreDemoService service = context.getBean(ISpringCoreDemoService.class);
+        service.Hello();
+
     }
 }
