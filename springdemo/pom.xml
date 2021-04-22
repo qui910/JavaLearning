@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.6</version>
+            <version>3.5.6</version>
         </dependency>
 
         <!-- mybatis单独开发的配合spring使用的jar包，方便自动加载 -->
